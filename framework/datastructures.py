@@ -129,3 +129,47 @@ def list_to_treenode(items: List[Optional[int]]) -> Optional[TreeNode]:
         i += 1
 
     return root
+
+
+def pretty_print_tree(node: Optional[TreeNode], prefix: str = "", is_left: bool = True):
+    """
+    Pretty prints a binary tree.
+
+    Args:
+        node: The current node to print.
+        prefix: The prefix string for indentation.
+        is_left: A boolean indicating if the current node is a left child.
+    """
+    if not node:
+        return
+
+    # Recursively print the right child first (for a more intuitive output)
+    if node.right:
+        pretty_print_tree(node.right, prefix + ("│   " if is_left else "    "), False)
+
+    # Print the current node
+    print(prefix + ("└── " if is_left else "┌── ") + str(node.val))
+
+    # Recursively print the left child
+    if node.left:
+        pretty_print_tree(node.left, prefix + ("    " if is_left else "│   "), True)
+
+
+def pretty_print_linked_list(head: Optional[ListNode]):
+    """
+    Pretty prints a linked list.
+
+    Args:
+        head: The head of the linked list.
+    """
+    if not head:
+        print("Empty List")
+        return
+
+    current = head
+    nodes = []
+    while current:
+        nodes.append(str(current.val))
+        current = current.next
+
+    print(" -> ".join(nodes))

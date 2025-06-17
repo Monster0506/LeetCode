@@ -121,8 +121,11 @@ The framework provides helpers for common LeetCode data structures, accessible v
 - **`TreeNode`**: Class for binary tree nodes. Implements `__eq__` for value-based tree comparison (recursive) and `__repr__` for display.
 - **`list_to_linkedlist(items: List[Any]) -> Optional[ListNode]`**: Converts a Python list into a linked list of `ListNode` objects.
 - **`list_to_treenode(items: List[Optional[int]]) -> Optional[TreeNode]`**: Converts a Python list (representing a level-order binary tree with `None` for null nodes, similar to LeetCode's representation) into a tree of `TreeNode` objects.
-
-**Usage Example for Data Structures:**
+- `pretty_print_linked_list(head: Optional[ListNode]):`: Prints the elements of a linked list in a readable format, starting from the given `head` node.
+- `pretty_print_tree(node: Optional[TreeNode], prefix: str = "", is_left bool = True):`: Prints the structure of a binary tree in a visually organized way, starting from the given `root` node.
+  - prefix: The string used for indentation, as determined by the value of is_left and the current tree structure.
+  - is_left: A boolean indicating if the current node is a left child, which affects how prefix is constructed.
+    **Usage Example for Data Structures:**
 
 ```python
 from framework import list_to_linkedlist, list_to_treenode
@@ -160,7 +163,7 @@ A custom comparator is a powerful tool for tests where simple equality (`==`) is
     # (like "Remove Duplicates from Sorted Array")
 
     # If you need colors for print statements within the comparator:
-    # from framework.framework import Colors # Or define a minimal local Colors class
+    # from framework import Colors # Or define a minimal local Colors class
     class LocalColors:
         RED = "\033[91m"; RESET = "\033[0m" # etc.
 
